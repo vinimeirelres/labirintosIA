@@ -11,10 +11,6 @@ def busca_profundidade(labirinto, pilha):
     else: #coloca na fila as posições possíveis
         labirinto[x][y] = -1 #marca como visitada
 
-        #Direita
-        if labirinto[x][y+1] != 0  and labirinto[x][y+1] != -1:
-            if ([x, y+1] not in pilha):
-                pilha.insert(0,[x, y+1])
         #Cima
         if labirinto[x-1][y] != 0 and labirinto[x-1][y] != -1:
             if ([x-1,y] not in pilha):
@@ -23,6 +19,10 @@ def busca_profundidade(labirinto, pilha):
         if labirinto[x][y-1] != 0 and labirinto[x][y-1] != -1:
             if ([x, y-1] not in pilha):
                 pilha.insert(0,[x, y-1])
+        #Direita
+        if labirinto[x][y+1] != 0  and labirinto[x][y+1] != -1:
+            if ([x, y+1] not in pilha):
+                pilha.insert(0,[x, y+1])
        #Baixo
         if labirinto[x+1][y] != 0  and labirinto[x+1][y] != -1:
             if ([x+1, y] not in pilha):

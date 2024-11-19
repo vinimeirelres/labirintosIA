@@ -38,7 +38,7 @@ while True:
         desenhar_labirinto(labirinto,janela,tamanho_celula)  # Desenha o labirinto
         pygame.display.flip()  # Atualiza a tela
         if alg:
-            print(caminho)
+            print(len(caminho))
     desenhar_labirinto(labirinto,janela,tamanho_celula)  # Desenha o labirinto
     pygame.display.flip()  # Atualiza a tela
 

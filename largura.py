@@ -11,10 +11,6 @@ def busca_largura(labirinto, fila):
     else: #coloca na fila as posições possíveis
         labirinto[x][y] = -1 #marca como visitada
 
-        #Direita
-        if labirinto[x][y+1] != 0  and labirinto[x][y+1] != -1:
-            if ([x, y+1] not in fila):
-                fila.append([x, y+1])
         #Cima
         if labirinto[x-1][y] != 0 and labirinto[x-1][y] != -1:
             if ([x-1,y] not in fila):
@@ -23,6 +19,10 @@ def busca_largura(labirinto, fila):
         if labirinto[x][y-1] != 0 and labirinto[x][y-1] != -1:
             if ([x, y-1] not in fila):
                 fila.append([x, y-1])
+        #Direita
+        if labirinto[x][y+1] != 0  and labirinto[x][y+1] != -1:
+            if ([x, y+1] not in fila):
+                fila.append([x, y+1])
        #Baixo
         if labirinto[x+1][y] != 0  and labirinto[x+1][y] != -1:
             if ([x+1, y] not in fila):

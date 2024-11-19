@@ -34,7 +34,7 @@ def executar_busca(tipo_busca):
         if posatual:
             caminho.append(posatual)
             sleep(0.5)
-            desenhar_labirinto(labirinto,janela,tamanho_celula)  # Desenha o labirinto
+            desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 1)  # Desenha o labirinto
             pygame.display.flip()  # Atualiza a tela
 
         if alg:
@@ -58,9 +58,9 @@ while True:
                 caminho = executar_busca('profundidade')
             if event.key == pygame.K_r:
                 labirinto = lab.getlabirinto()
-                desenhar_labirinto(labirinto,janela,tamanho_celula)
+                desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 0)
 
     janela.fill((255, 255, 255))  # Preenche a janela com branco
-    desenhar_labirinto(labirinto,janela,tamanho_celula)  # Desenha o labirinto
+    desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 0)  # Desenha o labirinto
     pygame.display.flip()  # Atualiza a tela
 

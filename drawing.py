@@ -1,7 +1,10 @@
 import pygame
 
 # Função para desenhar o labirinto
-def desenhar_labirinto(labirinto, janela, tamanho_celula):
+def desenhar_labirinto(labirinto, janela, tamanho_celula, POSICAO_INICIAL, OBJETIVO, EXECUTANDO_BUSCA):
+    if not EXECUTANDO_BUSCA:
+        labirinto[POSICAO_INICIAL[0]][POSICAO_INICIAL[1]] = 2
+        labirinto[OBJETIVO[0]][OBJETIVO[1]] = 3
     for y, linha in enumerate(labirinto):
         for x, celula in enumerate(linha):
             if celula == 1:  cor = (255, 255, 255)

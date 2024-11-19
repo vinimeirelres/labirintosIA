@@ -17,8 +17,8 @@ pygame.display.set_caption("Projeto 1 - Busca")
 
 
 labirinto = lab.getlabirinto()
-POSICAO_INICIAL = [10,0]
-OBJETIVO = [4,11]
+POSICAO_INICIAL = [4,11]
+OBJETIVO = [10,0]
 algoritmos = {
     'largura': largura.busca_largura,
     'profundidade': profundidade.busca_profundidade

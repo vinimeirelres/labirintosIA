@@ -1,10 +1,10 @@
-def busca_profundidade(labirinto, pilha):
+def busca_profundidade(labirinto, pilha, objetivo):
     posicaoatual = pilha.pop(0)
     x = posicaoatual[0]
     y = posicaoatual[1]
     lab = labirinto[x][y]
 
-    if lab == 3: # se a posição atual for o destino
+    if  posicaoatual == objetivo: # se a posição atual for o destino
         pilha = labirinto[x][y]
         labirinto[x][y] = -1 #marca como visitada
         return True, pilha, posicaoatual

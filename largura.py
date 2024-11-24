@@ -22,6 +22,7 @@ def busca_largura(labirinto, fila, objetivo):
             random.shuffle(opcoes)
         #-----------------------
 
+
         for opcao in opcoes:
             if opcao == 0: #Cima
                 if (x-1) >=0 and (x-1) < len(labirinto[x]):

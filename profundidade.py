@@ -9,6 +9,11 @@ def busca_profundidade(labirinto, pilha, objetivo):
         labirinto[x][y] = -1 #marca como visitada
         return True, pilha, posicaoatual
     else: #coloca na fila as posições possíveis
+
+        if labirinto[x][y] == 4:
+            pilha.append([x, y])
+            return False, pilha, posicaoatual
+
         labirinto[x][y] = -1 #marca como visitada
 
         #Cima

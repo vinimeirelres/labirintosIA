@@ -19,6 +19,19 @@ def beam_search(labirinto, beam, inicial, objetivo, beam_width):
         return True, atual['posicao'], posicaoatual
     else: #adiciona as posições possíveis no beam
         novo_beam = beam.copy()
+        
+        if labirinto[x][y] == 4:
+            novo_beam.append({
+                'posicao': atual['posicao'],
+                'h_score': atual['h_score']
+            })       
+            if len(beam) > 0:
+                atual = beam.pop(0)
+                posicaoatual = atual['posicao'][-1]
+                x, y = posicaoatual
+            else:
+                return False, novo_beam, posicaoatual
+
         labirinto[x][y] = -1
 
         #Cima

@@ -8,6 +8,9 @@ def busca_largura(labirinto, fila, objetivo):
         labirinto[x][y] = -1 #marca como visitada
         return True, fila, posicaoatual
     else: #coloca na fila as posições possíveis
+        if labirinto[x][y] == 4:
+            fila.append([x, y]) #adiciona ao fim da fila, caso esteja bloqueada
+            return False, fila, posicaoatual
         labirinto[x][y] = -1 #marca como visitada
 
         #Cima

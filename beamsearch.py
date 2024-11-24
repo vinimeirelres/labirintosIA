@@ -34,6 +34,8 @@ def beam_search(labirinto, beam, inicial, objetivo, beam_width):
 
         labirinto[x][y] = -1
 
+        #introduzir incerteza no beam search não faz sentido, pois o algoritmo reorganiza o beam segundo a heurística para escolher o próximo passo
+
         #Cima
         if (x-1) >= 0 and (x-1) < len(labirinto):
             if labirinto[x-1][y] != 0 and labirinto[x-1][y] != -1:

@@ -45,13 +45,13 @@ def executar_busca(tipo_busca, labirinto):
             alg, fila, posatual = algoritmos[tipo_busca](labirinto, fila, OBJETIVO)  # Busca 
         #print(posatual)
 
-        #---------bloqueisos temporários----------------
+        #---------AMBIENTE ESTOCÁSTICO----------------
         if passos % 3 ==  0: #atualiza os bloqueios temporários a cada 5 passos
             labirinto = lab.atualiza_bloqueios(labirinto)
         elif passos % 7 == 0: #tira os bloqueios temporários a cada 7 passos
             labirinto = lab.tira_bloqueios(labirinto)
         #-----------------------------------------------
-        
+
         #print(labirinto)
         if posatual:
             caminho.append(posatual)

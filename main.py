@@ -4,6 +4,7 @@ from drawing import desenhar_labirinto
 import lab
 import largura
 import profundidade
+import beamsearch
 from time import sleep
 
 
@@ -17,29 +18,42 @@ pygame.display.set_caption("Projeto 1 - Busca")
 
 
 labirinto = lab.getlabirinto()
+custos = lab.getcustos()
 POSICAO_INICIAL = [4,11]
 OBJETIVO = [10,0]
 algoritmos = {
     'largura': largura.busca_largura,
-    'profundidade': profundidade.busca_profundidade
+    'profundidade': profundidade.busca_profundidade,
+    'beam': beamsearch.beam_search
 }
+
 
 def executar_busca(tipo_busca):
     alg = False
     fila = [POSICAO_INICIAL]
+    beam = []
     caminho = []
+    custo = 0
 
     while not alg:
-        alg, fila, posatual = algoritmos[tipo_busca](labirinto, fila, OBJETIVO)  # Busca 
+        if (tipo_busca == 'beam'):
+            alg, beam, posatual = algoritmos[tipo_busca](labirinto, beam, POSICAO_INICIAL, OBJETIVO, 3)  # Busca
+        else:
+            alg, fila, posatual = algoritmos[tipo_busca](labirinto, fila, OBJETIVO)  # Busca 
+        #print(posatual)
         if posatual:
             caminho.append(posatual)
+            custo += custos[posatual[0]][posatual[1]]
             sleep(0.5)
             desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 1)  # Desenha o labirinto
             pygame.display.flip()  # Atualiza a tela
 
         if alg:
+            custo += custos[posatual[0]][posatual[1]]
             print("Labirinto concluído usando", tipo_busca)
+            #print(f"Caminho: {caminho}")
             print(f"Numero de passos: {len(caminho)-1}")
+            print(f"Custo: {custo}")
             return caminho
     return None
     
@@ -56,6 +70,8 @@ while True:
                 caminho = executar_busca('largura')
             if event.key == pygame.K_p:
                 caminho = executar_busca('profundidade')
+            if event.key == pygame.K_b:
+                caminho = executar_busca('beam')
             if event.key == pygame.K_r:
                 labirinto = lab.getlabirinto()
                 desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 0)

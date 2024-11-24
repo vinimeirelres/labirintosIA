@@ -1,4 +1,4 @@
-
+from random import random
 
 def getlabirinto():
     labirinto = [
@@ -16,3 +16,28 @@ def getlabirinto():
         [0,0,0,0,0,0,0,0,0,0,0,0]
     ]
     return labirinto
+
+def getcustos():
+    custos = [
+        [0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,1,1,0,1,1,1,1,1,1,0],
+        [0,1,0,1,0,1,0,0,0,0,1,0],
+        [0,0,0,1,0,1,1,1,1,0,1,0],
+        [0,1,1,1,1,0,0,0,1,0,1,1],
+        [0,0,0,0,1,0,1,0,1,0,1,0],
+        [0,1,1,0,1,0,1,0,1,0,1,0],
+        [0,0,1,0,1,0,1,0,1,0,1,0],
+        [0,1,1,1,1,1,1,1,1,0,1,0],
+        [0,0,0,0,0,0,1,0,0,0,1,0],
+        [1,1,1,1,1,1,1,0,1,1,1,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0]
+    ]
+    for y, linha in enumerate(custos):
+        for x, celula in enumerate(linha):
+            #custo = random()
+            custo = 1
+            if celula == 1:  custos[x][y] = custo
+            else: custos[x][y] = 0
+
+    
+    return custos

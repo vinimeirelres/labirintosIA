@@ -2,7 +2,6 @@ def busca_largura(labirinto, fila, objetivo):
     posicaoatual = fila.pop(0)
     x = posicaoatual[0]
     y = posicaoatual[1]
-    lab = labirinto[x][y]
 
     if posicaoatual == objetivo: # se a posição atual for o destino
         fila = labirinto[x][y]

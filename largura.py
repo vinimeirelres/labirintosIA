@@ -18,8 +18,8 @@ def busca_largura(labirinto, fila, objetivo):
         opcoes = [0, 1, 2, 3]
 
         #-------RUÍDO-------
-        if random.random() < 0.1:
-            random.shuffle(opcoes)
+        #if random.random() < 0.1:
+            #random.shuffle(opcoes)
         #-----------------------
 
 

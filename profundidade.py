@@ -21,8 +21,8 @@ def busca_profundidade(labirinto, pilha, objetivo):
         opcoes = [0, 1, 2, 3]
 
         #------RUIDO------
-        if random.random() < 0.1:
-            random.shuffle(opcoes)
+        #if random.random() < 0.1:
+            #random.shuffle(opcoes)
         #---------------------
 
         for opcao in opcoes:

@@ -1,6 +1,6 @@
 import random
 
-def busca_largura(labirinto, fila, objetivo):
+def busca_largura(labirinto, fila, objetivo, ruido):
     posicaoatual = fila.pop(0)
     x = posicaoatual[0]
     y = posicaoatual[1]
@@ -18,8 +18,9 @@ def busca_largura(labirinto, fila, objetivo):
         opcoes = [0, 1, 2, 3]
 
         #-------RUÍDO-------
-        #if random.random() < 0.1:
-            #random.shuffle(opcoes)
+        if ruido:
+            if random.random() < 0.1:
+                random.shuffle(opcoes)
         #-----------------------
 
 

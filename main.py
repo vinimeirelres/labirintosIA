@@ -49,6 +49,8 @@ def executar_busca(tipo_busca, labirinto):
         else:
             alg, fila, posatual = algoritmos[tipo_busca](labirinto, fila, OBJETIVO, ruido)  # Busca 
 
+        custos = lab.getcustos(labirinto)
+
         #---------AMBIENTE ESTOCÁSTICO----------------
         if ambiente_estocastico:
             if passos % 3 ==  0: #atualiza os bloqueios temporários a cada 5 passos
@@ -57,20 +59,16 @@ def executar_busca(tipo_busca, labirinto):
                 labirinto = lab.tira_bloqueios(labirinto)
         #-----------------------------------------------
 
-        custos = lab.getcustos(labirinto)
-
         if posatual:
             if posatual not in caminho:
                 caminho.append(posatual)
-            print(custos[posatual[0]][posatual[1]])
-            custo += custos[posatual[0]][posatual[1]]
-            #print(custo)
+            if posatual != POSICAO_INICIAL:
+                custo += custos[posatual[0]][posatual[1]]
             sleep(0.5)
             estocastico_button, ruido_button = desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 1, ambiente_estocastico, ruido)  # Desenha o labirinto
             pygame.display.flip()  # Atualiza a tela
 
         if alg:
-            custo += custos[posatual[0]][posatual[1]]
             print("Labirinto concluído usando", tipo_busca)
             print(f"Caminho: {caminho}")
             print(f"Numero de passos: {len(caminho)-1}")

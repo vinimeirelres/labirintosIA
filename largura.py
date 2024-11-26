@@ -19,7 +19,7 @@ def busca_largura(labirinto, fila, objetivo, ruido):
 
         #-------RUÍDO-------
         if ruido:
-            if random.random() < 0.1:
+            if random.random() < 0.5:
                 random.shuffle(opcoes)
         #-----------------------
 

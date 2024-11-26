@@ -21,8 +21,8 @@ def getcustos(labirinto):
     custos = [linha[:] for linha in labirinto]
     for x, linha in enumerate(labirinto):
         for y, celula in enumerate(linha):
-            #custo = random()
-            custo = 1
+            custo = random()
+            #custo = 1
             if celula == 1  or celula == -1:  custos[x][y] = custo
             else: custos[x][y] = 0
 

@@ -8,16 +8,16 @@ def desenhar_labirinto(labirinto, janela, tamanho_celula, POSICAO_INICIAL, OBJET
 
     # Botão do Ambiente estocástico
     estocastico_button = pygame.Rect(largura_janela - 310, 50, 280,30)
-    estocastico_color = (0, 255, 0) if ambiente_estocastico else (255, 0, 0)
+    estocastico_color = (176, 196, 222) if ambiente_estocastico else (255, 182, 193)  
     pygame.draw.rect(janela, estocastico_color, estocastico_button)
-    se_text = font.render('Ambiente Estocástico', True, (255, 255, 255))
+    se_text = font.render('Ambiente Estocástico', True, (0, 0, 0))
     janela.blit(se_text, (estocastico_button.x + 5, estocastico_button.y + 5))
 
     # Botao Ruido
     ruido_button = pygame.Rect(largura_janela - 310, 100, 160, 30)
-    ruido_color = (0, 255, 0) if ruido else (255, 0, 0)
+    ruido_color = (152, 251, 152) if ruido else (255, 228, 196)  # Tons pastéis
     pygame.draw.rect(janela, ruido_color, ruido_button)
-    noise_text = font.render('Ruído', True, (255, 255, 255))
+    noise_text = font.render('Ruído', True, (0, 0, 0))
     janela.blit(noise_text, (ruido_button.x + 5, ruido_button.y + 5))
 
     

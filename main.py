@@ -13,7 +13,7 @@ pygame.init()
 labirinto = lab.getlabirinto()
 
 tamanho_celula = 55
-largura_janela = (len(labirinto) * tamanho_celula)+210
+largura_janela = (len(labirinto) * tamanho_celula)+320
 altura_janela = (len(labirinto) * tamanho_celula)
 janela = pygame.display.set_mode((largura_janela, altura_janela))
 pygame.display.set_caption("Projeto 1 - Busca")

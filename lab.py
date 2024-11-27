@@ -34,7 +34,7 @@ def atualiza_bloqueios(labirinto, probabilidade=0.1):
     for x in range(len(labirinto)):
         for y in range(len(labirinto[0])):
             if labirinto[x][y] == 1:  # se é um caminho válido
-                if random() < probabilidade:
+                if random() <  probabilidade:
                     novo_labirinto[x][y] = 4  # bloqueia temporariamente
             elif labirinto[x][y] == -1:  # se é célula visitada
                 novo_labirinto[x][y] = -1  # mantém como visitada

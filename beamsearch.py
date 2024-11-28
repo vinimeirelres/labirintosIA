@@ -1,6 +1,45 @@
-def beam_search(labirinto, beam, inicial, objetivo, beam_width):
-    def heuristica(a, b): # Distância de Manhattan
+"""
+Módulo responsável pela implementação do algoritmo Beam Search (Busca em Feixe).
+
+Este módulo implementa a busca heurística Beam Search para encontrar um caminho no labirinto,
+com suporte a:
+- Tratamento de células bloqueadas temporariamente.
+- Marcação de células visitadas.
+- Limitação do feixe para otimizar a busca.
+"""
+
+def heuristica(a, b): # Distância de Manhattan
+        """
+    Calcula a distância de Manhattan entre duas posições.
+
+    Args:
+        a (List[int]): Coordenadas [x, y] da primeira posição.
+        b (List[int]): Coordenadas [x, y] da segunda posição.
+
+    Returns:
+        int: Distância de Manhattan entre as posições `a` e `b`.
+    """
         return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+def beam_search(labirinto, beam, inicial, objetivo, beam_width):
+    """
+    Executa um passo da busca Beam Search no labirinto.
+
+    Args:
+        labirinto (List[List[int]]): Matriz do labirinto atual.
+        fila (List[Dict]): Lista de nós a serem explorados, onde cada nó é um dicionário contendo:
+            - 'posicao': List[List[int]] -> Coordenadas [x, y] de todas as posições percorridas, a posição atual será a última da lista.
+            - 'h_score': float -> Valor heurístico associado ao nó.
+        objetivo (List[int]): Coordenadas [x, y] do objetivo.
+        beam_width (int): Número máximo de nós mantidos em cada nível (largura do feixe).
+
+    Returns:
+        Tuple[bool, Union[List[Dict], List[List[int]]]]:
+            - bool: True se encontrou o objetivo, False caso contrário.
+            - Union[List[Dict], List[List[int]]]:
+                * Se o objetivo **não** foi encontrado: retorna a fila atualizada (`List[Dict]`).
+                * Se o objetivo foi encontrado: retorna o caminho encontrado (`List[List[int]]`).
+    """
     
     if not beam:
         beam = [{'posicao': [inicial], 

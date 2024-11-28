@@ -1,7 +1,42 @@
 import pygame
+"""
+Módulo responsável pela interface gráfica do labirinto usando Pygame.
+
+Este módulo contém funções para renderizar o labirinto, botões de controle
+e elementos visuais da simulação.
+"""
 
 # Função para desenhar o labirinto
 def desenhar_labirinto(labirinto, janela, tamanho_celula, POSICAO_INICIAL, OBJETIVO, EXECUTANDO_BUSCA, ambiente_estocastico, ruido):
+    """
+    Desenha o labirinto e elementos da interface na janela do Pygame.
+
+    Args:
+        labirinto (List[List[int]]): Matriz do labirinto (lista 2D)
+        janela (pygame.Surface): Superfície de desenho do Pygame
+        tamanho_celula (int): Dimensão em pixels de cada célula
+        POSICAO_INICIAL (List[int]): Lista [x,y] da posição inicial
+        OBJETIVO (List[int]): Lista [x,y] do objetivo
+        EXECUTANDO_BUSCA (bool): Estado atual da busca
+        ambiente_estocastico (bool): Estado do modo estocástico
+        ruido (bool): Estado do modo com ruído
+
+
+    Returns:
+        Bool: Estado do botão de ambiente estocástico
+        Bool: Estado do botão de ruído
+    
+    Detalhes:
+        - Desenha o labirinto na janela do Pygame
+        - Desenha as posições inicial e final do labirinto
+        - Desenha as células bloqueadas temporariamente
+        - Desenha o caminho percorrido durante a busca
+        - Desenha botões para controle do ambiente estocástico e ruído
+        - Utiliza cores diferentes para indicar estados dos botões:
+            * Ambiente estocástico: Azul claro quando ativo, Rosa claro quando inativo
+            * Ruído: Verde claro quando ativo, Bege claro quando inativo
+        - Renderiza textos usando fonte Consolas tamanho 24
+    """
     font = pygame.font.SysFont('Consolas', 24)
     altura_janela = janela.get_height()
     largura_janela = janela.get_width()

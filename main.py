@@ -7,6 +7,21 @@ import profundidade
 import beamsearch
 from time import sleep
 
+"""
+Módulo principal que inicializa e coordena a execução dos algoritmos de busca no labirinto.
+
+Este script realiza as seguintes funções:
+- Inicializa o Pygame e configura a janela principal.
+- Carrega o labirinto a partir do módulo `lab.py`.
+- Define a posição inicial e o objetivo no labirinto.
+- Controla o loop principal de eventos, incluindo renderização gráfica e interação do usuário.
+- Implementa a lógica para alternar entre os diferentes algoritmos de busca:
+    * Busca em Largura
+    * Busca em Profundidade
+    * Beam Search
+- Lida com a ativação de funcionalidades opcionais, como ambiente estocástico e ruído na movimentação.
+- Exibe informações sobre o caminho encontrado, número de passos e custo total.
+"""
 
 pygame.init()
 
@@ -32,7 +47,25 @@ ruido = False
 
 
 def executar_busca(tipo_busca, labirinto):
-    global ambiente_estocastico, ruido
+    """
+    Executa o algoritmo de busca especificado no labirinto.
+
+    Args:
+        tipo_busca (str): Tipo de algoritmo a ser executado ('largura', 'profundidade' ou 'beam')
+        labirinto (List[List[int]]): Matriz do labirinto atual
+
+     Returns:
+        Tuple[Optional[List[List[int]]], List[List[int]]]: 
+            - Optional[List[List[int]]]: Lista de coordenadas [x,y] do caminho encontrado, ou None se não encontrou
+            - List[List[int]]: Matriz do labirinto atualizada após a busca
+            
+    Utiliza as variáveis globais:
+        ambiente_estocastico (bool): Controla bloqueios temporários no labirinto
+        ruido (bool): Adiciona aleatoriedade na ordem de expansão dos nós
+        POSICAO_INICIAL (List[int]): Coordenadas iniciais
+        OBJETIVO (List[int]): Coordenadas do objetivo
+    """
+    global ambiente_estocastico, ruido #variáveis globais
 
     alg = False
     fila = [POSICAO_INICIAL]
@@ -41,7 +74,7 @@ def executar_busca(tipo_busca, labirinto):
     custo = 0
     passos = 0
 
-    while not alg:
+    while not alg: # Enquanto não encontrar o objetivo
         passos += 1
         
         if (tipo_busca == 'beam'):
@@ -78,24 +111,24 @@ def executar_busca(tipo_busca, labirinto):
     
 
 
-while True:
-    for event in pygame.event.get():
+while True: #Loop principal
+    for event in pygame.event.get(): #Verifica eventos
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_l:
+        if event.type == pygame.KEYDOWN: #Verifica teclas pressionadas
+            if event.key == pygame.K_l: #Largura
                 caminho, labirinto = executar_busca('largura', labirinto)
-            if event.key == pygame.K_p:
+            if event.key == pygame.K_p: #Profundidade
                 caminho, labirinto = executar_busca('profundidade', labirinto)
-            if event.key == pygame.K_b:
+            if event.key == pygame.K_b: #Beam
                 caminho, labirinto = executar_busca('beam', labirinto)
-            if event.key == pygame.K_r:
+            if event.key == pygame.K_r: #Reiniciar
                 labirinto = lab.getlabirinto()
                 estocastico_button, ruido_button = desenhar_labirinto(labirinto,janela,tamanho_celula, POSICAO_INICIAL, OBJETIVO, 0, ambiente_estocastico, ruido)
         
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN: #Verifica cliques do mouse
             mouse_pos = event.pos
             if estocastico_button.collidepoint(mouse_pos):
                 ambiente_estocastico = not ambiente_estocastico

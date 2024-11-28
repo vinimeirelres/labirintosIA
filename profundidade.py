@@ -1,19 +1,48 @@
 import random
 
+"""
+Módulo responsável pela implementação do algoritmo de Busca em Profundidade.
+
+Este módulo implementa a busca em profundidade para encontrar um caminho no labirinto, com suporte a:
+- Tratamento de células bloqueadas temporariamente.
+- Ruído na movimentação (probabilidade de 50% de ordem aleatória).
+- Marcação de células visitadas.
+- Verificação de célula de destino.[
+- Adição de células possíveis na pilha de exploração.
+- Retorno de resultados parciais e finais.
+"""
+
 def busca_profundidade(labirinto, pilha, objetivo, ruido):
+    """
+    Executa um passo da busca em profundidade no labirinto.
+
+    Args:
+        labirinto (List[List[int]]): Matriz do labirinto atual.
+        pilha (List[List[int]]): Pilha de posições a serem exploradas, onde cada posição é [x, y].
+        objetivo (List[int]): Coordenadas [x, y] do objetivo.
+        ruido (bool): Indica se deve aplicar ruído na ordem de exploração.
+
+    Returns:
+        Tuple[bool, Union[List[List[int]], List[int]], List[int]]:
+            - bool: True se encontrou o objetivo, False caso contrário.
+            - Union[List[List[int]], List[int]]:
+                * Se o objetivo **não** foi encontrado: retorna a pilha atualizada (`List[List[int]]`).
+                * Se o objetivo foi encontrado: retorna a posição final (`List[int]`).
+            - List[int]: Posição atual [x, y].
+    """
     posicaoatual = pilha.pop(0)
     x = posicaoatual[0]
     y = posicaoatual[1]
     lab = labirinto[x][y]
 
     if  posicaoatual == objetivo: # se a posição atual for o destino
-        pilha = labirinto[x][y]
+        pilha = posicaoatual
         labirinto[x][y] = -1 #marca como visitada
         return True, pilha, posicaoatual
     else: #coloca na fila as posições possíveis
 
         if labirinto[x][y] == 4:
-            pilha.append([x, y])
+            pilha.insert(0,[x, y])
             return False, pilha, posicaoatual
 
         labirinto[x][y] = -1 #marca como visitada

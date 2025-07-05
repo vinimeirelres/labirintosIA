@@ -4,11 +4,11 @@ Este projeto demonstra algoritmos de busca clássicos aplicados a um labirinto 2
 
 ## Algoritmos implementados
 
-- **Busca em Largura (BFS)** – implementação no arquivo `largura.py`【F:largura.py†L3-L14】.
-- **Busca em Profundidade (DFS)** – implementação no arquivo `profundidade.py`【F:profundidade.py†L3-L13】.
-- **Beam Search** – implementação no arquivo `beamsearch.py`【F:beamsearch.py†L1-L8】.
+- **Busca em Largura (BFS)** – implementação no arquivo `largura.py`.
+- **Busca em Profundidade (DFS)** – implementação no arquivo `profundidade.py`.
+- **Beam Search** – implementação no arquivo `beamsearch.py`.
 
-O arquivo `main.py` orquestra a aplicação: inicializa o Pygame, carrega o labirinto e permite alternar entre os algoritmos【F:main.py†L10-L22】.
+O arquivo `main.py` orquestra a aplicação: inicializa o Pygame, carrega o labirinto e permite alternar entre os algoritmos.
 
 ## Requisitos
 
@@ -35,7 +35,7 @@ Uma janela será aberta mostrando o labirinto. Use as seguintes teclas para inic
 
 Durante a execução, clique nos botões da interface para ativar o **Ambiente Estocástico** (adiciona/remove bloqueios temporários) e o **Ruído** (aleatoriza a ordem de expansão)【F:main.py†L120-L139】.
 
-A posição inicial (`POSICAO_INICIAL`) e o objetivo (`OBJETIVO`) são definidos em `main.py`【F:main.py†L37-L44】, e o layout do labirinto está em `lab.py`【F:lab.py†L20-L46】.
+A posição inicial (`POSICAO_INICIAL`) e o objetivo (`OBJETIVO`) são definidos em `main.py`, e o layout do labirinto está em `lab.py`.
 
 ## Estrutura do projeto
 
@@ -50,7 +50,7 @@ main.py            # Loop principal da aplicação
 
 ## Personalização
 
-- Para alterar o labirinto ou a probabilidade de bloqueios temporários, edite as funções em `lab.py`【F:lab.py†L31-L110】.
+- Para alterar o labirinto ou a probabilidade de bloqueios temporários, edite as funções em `lab.py`.
 - Para modificar a largura do feixe na Beam Search, ajuste o argumento `beam_width` em `main.py` na chamada do algoritmo.
 
 ---
